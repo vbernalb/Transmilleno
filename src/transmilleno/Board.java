@@ -57,13 +57,14 @@ public class Board extends JPanel implements ActionListener {
         return a;
     }
     
+
+    
     public int mapa1(int x, int y, Graphics g){
         
         int estado = 0;
-        
-        g.setColor(Color.yellow);
+
         Rectangle a = null;
-        
+        g.setColor(Color.DARK_GRAY);
         int dir = personaje.getDir();
         
         Rectangle per = null;
@@ -71,23 +72,19 @@ public class Board extends JPanel implements ActionListener {
         
         if(dir == 1){
             man = loadImage("mov.png");
-            g.drawImage(man,personaje.getX(),personaje.getY() ,personaje.getX()+(91), personaje.getY()+91 ,this.secuencia*91,0,(this.secuencia*91)+91, 91, this);
-            g.setColor(Color.red);    
+            g.drawImage(man,personaje.getX(),personaje.getY() ,personaje.getX()+(91), personaje.getY()+91 ,this.secuencia*91,0,(this.secuencia*91)+91, 91, this);  
              per = new Rectangle(personaje.getX(),personaje.getY(),91,96);
         }else if(dir == 4){
             man = loadImage("mov.png");
-            g.drawImage(man,personaje.getX(),personaje.getY() ,personaje.getX()+(91), personaje.getY()+91 ,this.secuencia*91,91,(this.secuencia*91)+91, 182, this);
-            g.setColor(Color.red);    
+            g.drawImage(man,personaje.getX(),personaje.getY() ,personaje.getX()+(91), personaje.getY()+91 ,this.secuencia*91,91,(this.secuencia*91)+91, 182, this);   
             per = new Rectangle(personaje.getX(),personaje.getY(),91,96);
         }else if(dir == 3){
             man = loadImage("mov.png");
-            g.drawImage(man,personaje.getX(),personaje.getY() ,personaje.getX()+(91), personaje.getY()+91 ,this.secuencia*91,182,(this.secuencia*91)+91, 273, this);
-            g.setColor(Color.red);    
+            g.drawImage(man,personaje.getX(),personaje.getY() ,personaje.getX()+(91), personaje.getY()+91 ,this.secuencia*91,182,(this.secuencia*91)+91, 273, this);   
              per = new Rectangle(personaje.getX(),personaje.getY(),91,96);
         }else if(dir == 2){
             man = loadImage("mov.png");
-            g.drawImage(man,personaje.getX(),personaje.getY() ,personaje.getX()+(91), personaje.getY()+91 ,this.secuencia*91,273,(this.secuencia*91)+91, 364, this);
-            g.setColor(Color.red);    
+            g.drawImage(man,personaje.getX(),personaje.getY() ,personaje.getX()+(91), personaje.getY()+91 ,this.secuencia*91,273,(this.secuencia*91)+91, 364, this);  
             per = new Rectangle(personaje.getX(),personaje.getY(),91,96);
         }
         
@@ -97,109 +94,174 @@ public class Board extends JPanel implements ActionListener {
         switch (x) {
             case 0:
                 if(y!=6 && y!=7){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }break;
             case 1:
                 if(y!=0 && y!=1 && y!=2 && y!=3 && y!=4 & y!=6 ){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 2:
                 if(y!=0 && y!=4 && y!=6 && y!=7){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 3:
                 if(y!=0 && y!=1 && y!=2 && y!=4 && y!=7){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 4:
                 if(y!=2 && y!=4 && y!=5 && y!=6 && y!=7){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 5:
                 if(y!=2){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 6:
                 if(y!=2 && y!=3 && y!=4 && y!=5){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 7:
                 if(y!=5){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 8:
                 if(y!=3 && y!=4 && y!=5){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 9:
                 if(y!=3){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 10:
                 if(y!=3 && y!=4 && y!=5 && y!=6 && y!=7){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 11:
                 if(y!=0 && y!=1 && y!=2 && y!=7){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 12:
                 if(y!=0 && y!=2 && y!=3 && y!=5 && y!=6 && y!=7){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 13:
                 if(y!=0 && y!=3 && y!=5){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                }
+                break;
             case 14:
                 if(y!=0 && y!=3 && y!=4 && y!=5){
-                    a = pinta(x,y,g);
+                    a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
                     }
-                }   break;
+                }else{
+                    g.drawRect(x*91,y*96,91,96);
+                    g.fillRect(x*91,y*96,91,96);
+                    if(y == 0){
+                        a = new Rectangle(x*91,y*96,91,96);
+                        if(per.intersects(a)){
+                            estado = 2;
+                        }
+                    }
+                }
+                break;
             default:
                 break;
         }
@@ -221,8 +283,8 @@ public class Board extends JPanel implements ActionListener {
                 g.setColor(Color.BLACK);
                 g.drawRect(i*91, j*96, 91, 96);
                 int a = mapa1(i,j,g);
-                if(a == 1){
-                    estado++;
+                if(a == 1 || a == 2){
+                    estado = a;
                     this.timer.stop();
                     break;
                 }
@@ -232,6 +294,10 @@ public class Board extends JPanel implements ActionListener {
         if(estado == 1){
             Image perdiste= loadImage("Perdiste1.png");
             g.drawImage(perdiste, 0, 0,1362, 768 , 0, 0, 1362, 768, this);
+        }
+        if(estado == 2){
+            Image ganaste= loadImage("Ganaste.png");
+            g.drawImage(ganaste, 0, 0,1362, 768 , 0, 0, 1362, 768, this);
         }
         
     }
