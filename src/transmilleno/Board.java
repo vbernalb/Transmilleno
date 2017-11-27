@@ -46,7 +46,7 @@ public class Board extends JPanel implements ActionListener {
         this.timer.start();
         this.secuencia = 0;
         this.cambio = 0;
-        this.tiempo = 8; //TIEMPO PARA COMPLETAR EL NIVEL
+        this.tiempo = 10; //TIEMPO PARA COMPLETAR EL NIVEL
         this.cambio2 = 0;
         this.estado = 0;
         this.ganado = 0;
@@ -76,7 +76,6 @@ public class Board extends JPanel implements ActionListener {
         int estado = 0;
 
         Rectangle a = null;
-        g.setColor(Color.DARK_GRAY);
         int dir = personaje.getDir();
         
         Rectangle per = null;
@@ -289,7 +288,6 @@ public class Board extends JPanel implements ActionListener {
         int estado = 0;
 
         Rectangle a = null;
-        g.setColor(Color.DARK_GRAY);
         int dir = personaje.getDir();
         
         Rectangle per = null;
@@ -391,7 +389,7 @@ public class Board extends JPanel implements ActionListener {
                 }
                 break;
             case 7:
-                if(y!=0 && y!=1 && y!=3 && y!=4 && y!=5 && y!=7){
+                if(y!=3 && y!=4 && y!=5 && y!=7){
                     a = new Rectangle(x*91,y*96,91,96);
                     if(per.intersects(a)){
                         estado ++;
@@ -480,7 +478,7 @@ public class Board extends JPanel implements ActionListener {
                         a = new Rectangle(x*91,y*96,91,96);
                         if(per.intersects(a)){
                             this.ganado++;
-                            this.tiempo = 8;
+                            this.tiempo = 10;
                             personaje.setX(0);
                             personaje.setY(672);
                             System.out.println("Ganaste el primer nivel, ganado es: " + this.ganado);
@@ -503,8 +501,10 @@ public class Board extends JPanel implements ActionListener {
     public int niveles(int x, int y, Graphics g, int nivel){
         int estado1 = 0;
             if(nivel == 1){
+                g.setColor(Color.DARK_GRAY);
                 estado1 = mapa1(x,y,g);                
             }else {
+                g.setColor(Color.ORANGE);
                 estado1 = mapa2(x,y,g);
             }       
         return estado1;
