@@ -17,12 +17,18 @@ public class Personaje implements KeyListener{
     private int y;
     private int x;
     private int ac; //VARIABLE QUE PERMITE SABER SI SE HA SOLTADO LA TECLA
+    private int dir;
     
     public Personaje(){
         this.y = 672;
         this. x = 0;
         this. ac = 0;
+        this.dir = 1;
 
+    }
+
+    public int getDir() {
+        return dir;
     }
 
     public int getX() {
@@ -45,20 +51,24 @@ public class Personaje implements KeyListener{
             if(key == KeyEvent.VK_UP){
                 if(this.y>=96){
                     this.y -= 96;
+                    this.dir = 1;
                 }
             }
             if(key == KeyEvent.VK_DOWN){
                 if(this.y<=576)
                     this.y += 96;
+                    this.dir = 3;
             }
             if(key == KeyEvent.VK_LEFT){
                 if(this.x>=91){
                     this.x -= 91;
+                    this.dir = 4;
                 }
             }
             if(key == KeyEvent.VK_RIGHT){
                 if(this.x<= 1271){
                     this.x +=91;
+                    this.dir = 2;
                 }
             }
         }
