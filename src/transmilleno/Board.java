@@ -25,8 +25,14 @@ public class Board extends JPanel implements ActionListener {
     
     private Personaje personaje;
     private Timer timer;
+    
     private int secuencia;
     private int cambio;
+    
+    private int tiempo;
+    private int cambio2;
+    
+    private int estado;
 
     public Board() {
         
@@ -37,6 +43,9 @@ public class Board extends JPanel implements ActionListener {
         this.timer.start();
         this.secuencia = 0;
         this.cambio = 0;
+        this.tiempo = 8; //TIEMPO PARA COMPLETAR EL NIVEL
+        this.cambio2 = 0;
+        this.estado = 0;
         
         
     }
@@ -272,16 +281,17 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void paintComponent (Graphics g){
         
-        int estado = 0;
+
         super.paintComponent(g);
+          
         
         Image calle= loadImage("personas.jpg");
         g.drawImage(calle, 0, 0,1362, 768 , 0, 0, 1362, 768, this);
         
         for(int i=0; i<15; i++){
             for(int j=0; j<8; j++){
-                g.setColor(Color.BLACK);
-                g.drawRect(i*91, j*96, 91, 96);
+               // g.setColor(Color.BLACK);
+                //g.drawRect(i*91, j*96, 91, 96);
                 int a = mapa1(i,j,g);
                 if(a == 1 || a == 2){
                     estado = a;
@@ -291,11 +301,14 @@ public class Board extends JPanel implements ActionListener {
             }
         }
         
-        if(estado == 1){
+        Image t = loadImage("tiempo.png");
+        g.drawImage(t, 0, 0,91, 96 , (this.tiempo*91)-91, 0, (this.tiempo*91), 96, this);
+        
+        if(this.estado == 1 || this.estado == 3){
             Image perdiste= loadImage("Perdiste1.png");
             g.drawImage(perdiste, 0, 0,1362, 768 , 0, 0, 1362, 768, this);
         }
-        if(estado == 2){
+        if(this.estado == 2 ){
             Image ganaste= loadImage("Ganaste.png");
             g.drawImage(ganaste, 0, 0,1362, 768 , 0, 0, 1362, 768, this);
         }
@@ -312,6 +325,18 @@ public class Board extends JPanel implements ActionListener {
                 this.secuencia++;
             }
         }
+        
+        this.cambio2+=10;
+        if(this.cambio2%1000 == 0){
+            if(this.tiempo!=0){
+                this.tiempo--;
+            }else{
+                this.estado = 3;
+                this.timer.stop();
+            }
+        }
+        
+        
         repaint(); 
         
     }
